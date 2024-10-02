@@ -6,7 +6,7 @@ import CommentsContainer from "./CommentsContainer";
 import LiveChatContainer from "./LiveChatContainer";
 
 const WatchPage = () => {
-  const  showSideBar = useSelector((store)=>store.sideBar.showSideBar)
+
   const dispatch = useDispatch();
     const [searchParam] =useSearchParams();
     const key = searchParam.get("v");
@@ -14,6 +14,7 @@ const WatchPage = () => {
     
     useEffect(()=>{
         dispatch(closeSideBar());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
   return (
     <div className="h-[90vh] overflow-y-scroll w-screen">
