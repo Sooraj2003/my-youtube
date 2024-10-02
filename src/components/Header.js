@@ -23,25 +23,28 @@ const Header = () => {
     return ()=>{
       clearTimeout(timer);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[value]);
   const searchCache = useSelector(store=>store.cache);
   //{key:"",key:""}  0(1) but arrau takes O(n) also use hashmap
   const getSearchSuggestions = async ()=>{
+    try{
     if(searchCache[value]){
       setSearchSuggestions(searchCache[value]);
     }else{
-      try{
+      
     const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API+value);
     const json = await data.json();
     console.log("api call"+value);
     setSearchSuggestions(json[1]);
     dispatch(addSearchCache({[value]:json[1]}))
-      }
-      catch(e){
-        console.log("Enable cors plugin to use youtube search api");
-        
-      }
     }
+   } catch(e){
+     console.log(e);
+     
+    }
+     
+    
   }
   const handleSideBar = ()=>{
         dispatch(toggleSideBar());
