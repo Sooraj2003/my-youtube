@@ -28,7 +28,7 @@ const Header = () => {
   const searchCache = useSelector(store=>store.cache);
   //{key:"",key:""}  0(1) but arrau takes O(n) also use hashmap
   const getSearchSuggestions = async ()=>{
-    try{
+  
     if(searchCache[value]){
       setSearchSuggestions(searchCache[value]);
     }else{
@@ -39,10 +39,8 @@ const Header = () => {
     setSearchSuggestions(json[1]);
     dispatch(addSearchCache({[value]:json[1]}))
     }
-   } catch(e){
-     console.log(e);
-     
-    }
+  
+    
      
     
   }
