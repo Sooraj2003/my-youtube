@@ -1,10 +1,10 @@
 import { IoIosSearch } from "react-icons/io"
-import { YOUTUBE_LOGO ,USER_LOGO,HAMBURGER_ICON, YOUTUBE_SEARCH_SUGGESTION_API} from "../utils/constants"
+import { YOUTUBE_LOGO ,USER_LOGO,HAMBURGER_ICON, YOUTUBE_SEARCH_SUGGESTION_API} from "../utils/constants.js"
 import { useDispatch, useSelector } from "react-redux"
-import { toggleSideBar } from "../utils/sideBarSlice";
+import { toggleSideBar } from "../utils/sideBarSlice.js";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { addSearchCache } from "../utils/searchSlice";
+import { addSearchCache } from "../utils/searchSlice.js";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -33,9 +33,11 @@ const Header = () => {
       setSearchSuggestions(searchCache[value]);
     }else{
       
-    const data = await fetch(`/.netlify/functions/youtube-search-suggestions?q=${value}`);
+    const data = await fetch(`https://proxy-server-gf8s.onrender.com/api/youtube-search-suggestions?q=${encodeURIComponent(value)}`);
     const json = await data.json();
     console.log("api call"+value);
+    console.log(json[1]);
+    
     setSearchSuggestions(json[1]);
     dispatch(addSearchCache({[value]:json[1]}))
     }
@@ -75,7 +77,7 @@ const Header = () => {
     {showSearchSuggestions &&
     <div className="w-5/12  bg-white absolute left-[28%] top-11 rounded-lg shadow-lg">
         <ul className=" font-semibold">
-          {searchSuggesstions.map(item=><Link to={"/search?search_query="+item} key={item}><li   className="m-1 p-1 hover:bg-gray-200 hover:rounded-lg"><IoIosSearch className="inline-block"/> {item}</li></Link>)}
+          {searchSuggesstions?.map(item=><Link to={"/search?search_query="+item} key={item}><li   className="m-1 p-1 hover:bg-gray-200 hover:rounded-lg"><IoIosSearch className="inline-block"/> {item}</li></Link>)}
         </ul>
     </div>
       }

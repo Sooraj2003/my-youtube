@@ -1,3 +1,0 @@
-[build]
-  functions = "functions" # Where your Netlify Functions will live
-
