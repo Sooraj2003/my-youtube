@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Body from "./components/Body";
-import Header from "./components/Header";
+import Body from "./components/Body.js";
+import Header from "./components/Header.js";
 import WatchPage from "./components/WatchPage";
-import MainContainer from "./components/MainContainer";
-import QueryPage from "./components/QueryPage";
-import Demo from "./components/Demo";
+import MainContainer from "./components/MainContainer.js";
+import QueryPage from "./components/QueryPage.js";
+import Demo from "./components/Demo.js";
 
 
 function App() {

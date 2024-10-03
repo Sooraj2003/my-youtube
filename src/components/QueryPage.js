@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import SearchCard from "./SearchCard";
+import SearchCard from "./SearchCard.js";
 
 
 const QueryPage = () => {
@@ -13,6 +13,7 @@ const QueryPage = () => {
     useEffect(()=>{
       getResults();
       console.log(videos);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const getResults = async ()=>{
