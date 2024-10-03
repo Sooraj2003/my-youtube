@@ -1,3 +1,5 @@
 [build]
-  functions = "functions" # Where your Netlify Functions will live
+  functions = "functions" # Directory where your Netlify Functions are stored
 
+[functions]
+  timeout = 20 # Increase the function timeout to 20 seconds
