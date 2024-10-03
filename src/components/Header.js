@@ -33,7 +33,7 @@ const Header = () => {
       setSearchSuggestions(searchCache[value]);
     }else{
       
-    const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API+value);
+    const data = await fetch(`/.netlify/functions/youtube-search-suggestions?q=${value}`);
     const json = await data.json();
     console.log("api call"+value);
     setSearchSuggestions(json[1]);
