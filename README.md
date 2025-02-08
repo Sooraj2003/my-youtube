@@ -41,13 +41,7 @@
   Integrated into the search functionality to optimize API calls.
 
 
-### Additional Enhancements
 
-- **API Polling:**  
-  Regular polling for live chat updates.
-
-- **Memoization Techniques:**  
-  Using React’s memoization hooks (e.g., `React.memo`, `useMemo`) to prevent unnecessary re-renders.
 
 ## Installation
 
